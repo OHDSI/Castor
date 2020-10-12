@@ -10,7 +10,7 @@ Authors@R: c(
   )
 Maintainer: Anthony Molinaro <amolin19@its.jnj.com>
 Description: Castor is an R package that facilitates exploratory analysis of temporal data in an 
-             observational database in the OMOP Common Data Model.  It enables you to extract the 
+             observational database in the OMOP Common Data Model v5.x.  It enables you to extract the 
 			 desired data from your database and build univariate or multivariate time series objects.  Each time 
 			 series can represent either a single concept or a concept set.  A concept set time series 
 			 combines the data for multiple concepts into a single multivariate time series object.  
