@@ -119,7 +119,7 @@ Castor and Pollux were twin brothers whose mother was Leda.  Pollux's father was
 	```
 ![Slope makes roughly 20 degree angle with the x-axis](./images/slopePlot.png)
 	
-**Plot time with trend determined by stl**
+**Plot time series with trend determined by stl**
 
     ```r
 	# PLOT TS AND TREND
@@ -131,11 +131,25 @@ Castor and Pollux were twin brothers whose mother was Leda.  Pollux's father was
 	```
 ![Plotting the trend](./images/trendPlot.png)
 
+**Find outliers relative to the trend and plot them on both the trend and time series**
+
+    ```r
+	# Find trend outliers and highlight them on both the trend and original time series in purple
+	to <- Castor::getTrendOutliers(diab2014)
+	ts.plot(diab2014,diab2014.tr,col=c("black","red"))
+	points(x=time(diab2014.tr)[to],y=diab2014.tr[to],col="purple",cex=1.1,pch=16)
+	points(x=time(diab2014)[to],y=diab2014[to],col="purple",cex=1.1,pch=16)
+	```
+![Plotting the outliers](./images/trendWithOutliers.png)
+
 **Find transition points of the trend - these are points where trend changes direction (from decreasing to increasing and vice versa)**
 
     ```r
 	# Find transition points and highlight them on both the trend and original time series in blue
 	tp <- Castor::getTrendTransitionPoints(diab2014)
+	# Uncomment the time below to create a new plot, otherwise points() will plot the transition points
+	# on the graph from the previous example. 
+	# ts.plot(diab2014,diab2014.tr,col=c("black","red"))
 	points(x=time(diab2014.tr)[tp],y=diab2014.tr[tp],col="darkblue",cex=1.1,pch=16)
 	points(x=time(diab2014)[tp],y=diab2014[tp],col="darkblue",cex=1.1,pch=16)
 	```
@@ -146,6 +160,9 @@ Castor and Pollux were twin brothers whose mother was Leda.  Pollux's father was
     ```r	
 	# Find change points - defined as transition points that continue in the new direction for 12 months
 	# and identify them on the trend and the original time series in green
+	# Uncomment the time below to create a new plot, otherwise points() will plot the transition points
+	# on the graph from the previous example. 
+	# ts.plot(diab2014,diab2014.tr,col=c("black","red"))
 	cp <- Castor::getTrendChangePoints(diab2014,nPeriods = 12)
 	points(x=time(diab2014.tr)[cp],y=diab2014.tr[cp],col="green",cex=1.1,pch=16)
 	points(x=time(diab2014)[cp],y=diab2014[cp],col="green",cex=1.1,pch=16)
@@ -158,6 +175,9 @@ Castor and Pollux were twin brothers whose mother was Leda.  Pollux's father was
 	# Find change points - defined as transition points that have changed by more .1%
 	# and continue in the new direction for 6 months in orange
 	# and identify them on the trend and the original time series in orange
+	# Uncomment the time below to create a new plot, otherwise points() will plot the transition points
+	# on the graph from the previous example. 
+	# ts.plot(diab2014,diab2014.tr,col=c("black","red"))
 	cp <- Castor::getTrendChangePoints(diab2014,minPctChange = .001)
 	points(x=time(diab2014.tr)[cp],y=diab2014.tr[cp],col="darkorange",cex=1.1,pch=16)
 	points(x=time(diab2014)[cp],y=diab2014[cp],col="darkorange",cex=1.1,pch=16)
