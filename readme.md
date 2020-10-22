@@ -147,9 +147,9 @@ Castor and Pollux were twin brothers whose mother was Leda.  Pollux's father was
     ```r
 	# Find transition points and highlight them on both the trend and original time series in blue
 	tp <- Castor::getTrendTransitionPoints(diab2014)
-	# Uncomment the time below to create a new plot, otherwise points() will plot the transition points
-	# on the graph from the previous example. 
-	# ts.plot(diab2014,diab2014.tr,col=c("black","red"))
+	# Comment out the line below to re-use the plot from the previous example and see the transition points
+	# and outliers in the same graph.
+	ts.plot(diab2014,diab2014.tr,col=c("black","red"))
 	points(x=time(diab2014.tr)[tp],y=diab2014.tr[tp],col="darkblue",cex=1.1,pch=16)
 	points(x=time(diab2014)[tp],y=diab2014[tp],col="darkblue",cex=1.1,pch=16)
 	```
@@ -158,11 +158,9 @@ Castor and Pollux were twin brothers whose mother was Leda.  Pollux's father was
 **Find change points 1**
 
     ```r	
-	# Find change points - defined as transition points that continue in the new direction for 12 months
-	# and identify them on the trend and the original time series in green
-	# Uncomment the time below to create a new plot, otherwise points() will plot the transition points
-	# on the graph from the previous example. 
-	# ts.plot(diab2014,diab2014.tr,col=c("black","red"))
+	# Find change points - defined (in this example) as transition points that continue in the new direction for 12 months
+	# and identify them on the trend and the original time series in green.
+	# NB: The points are plotted on the trend and time series from the previous example.
 	cp <- Castor::getTrendChangePoints(diab2014,nPeriods = 12)
 	points(x=time(diab2014.tr)[cp],y=diab2014.tr[cp],col="green",cex=1.1,pch=16)
 	points(x=time(diab2014)[cp],y=diab2014[cp],col="green",cex=1.1,pch=16)
@@ -172,12 +170,10 @@ Castor and Pollux were twin brothers whose mother was Leda.  Pollux's father was
 **Find change points 2**
 
     ```r	
-	# Find change points - defined as transition points that have changed by more .1%
-	# and continue in the new direction for 6 months in orange
-	# and identify them on the trend and the original time series in orange
-	# Uncomment the time below to create a new plot, otherwise points() will plot the transition points
-	# on the graph from the previous example. 
-	# ts.plot(diab2014,diab2014.tr,col=c("black","red"))
+	# Find change points - defined (in this example) as transition points that have changed by more .1%
+	# and continue in the new direction for 6 months.
+	# Identify them on the trend and the original time series in orange.
+	# NB: The points are plotted on the trend and time series from the previous example.
 	cp <- Castor::getTrendChangePoints(diab2014,minPctChange = .001)
 	points(x=time(diab2014.tr)[cp],y=diab2014.tr[cp],col="darkorange",cex=1.1,pch=16)
 	points(x=time(diab2014)[cp],y=diab2014[cp],col="darkorange",cex=1.1,pch=16)
@@ -189,7 +185,7 @@ Castor and Pollux were twin brothers whose mother was Leda.  Pollux's father was
     ```r	
 	# Suppose you want to investigate whether or not there has been a 25% increase or decrease
 	# in the number of cases in any month.  Search the neighbohood of the count time series
-	# and highlight the points of interest on both the time series and the trend
+	# and highlight the points of interest on both the time series and the trend.
 
 	diab2014.cv <- window(diabetesTs[,"COUNT_VALUE"],end=c(2014,12))
 	nHood <- Castor::getNeighborhoodDf(diab2014.cv)
@@ -228,7 +224,7 @@ Castor and Pollux were twin brothers whose mother was Leda.  Pollux's father was
 	```r
 	# How many distinct people were diagnosed with a condition (any condition)
 	# every year from 2008 to 2018?  Build a yearly time series of distinct counts from 
-	# condition_occurrence
+	# condition_occurrence.
 	tableName      <- "condition_occurrence"
 	dateColumnName <- "condition_start_date"
 	startDate      <- "2008-01-01"
