@@ -9,17 +9,22 @@ tsData.ma <- getMA(tsData,N)
 \arguments{
 \item{tsData}{A time series object.}
 
-\item{N}{An integer indicating how many prior elements to include.}
+\item{N}{An integer indicating how many prior or later elements to include.}
+
+\item{direction}{A string indicating which elements to use to compute the moving average relative to each point. Valid values are "prior" and "later".}
 }
 \value{
 A time series of moving averages
 }
 \description{
-Compute a moving average using one or more prior elements
+Compute a moving average using prior or later elements
 }
 \details{
-If N is null, then 1,2,...,length(tsData) points will be used in the computation of the moving average.
-If N is not null, then an N point moving average is computed.
-In either case, a one-sided (non-centered) moving average is computed.
-The first N-1 elements of the moving average retain the value of the first N-1 elements of the time series.
+If N is null and direction is "prior", then the current point and all prior points are used in the compuation.
+If N is null and direction is "later", then the current point and all later points are used in the computation.
+If N is not null, then an N point moving average is computed in the direction specified (default is "prior").
+In any case, a one-sided (non-centered) moving average is computed.
+If direction is "prior", then the current point and the prior N-1 points are included in the computation.
+If direction is "later", then the current point and the later N-1 points are included in the computation.
+If there are not enough points to compute an N-point MA, then the original values are retained.
 }

@@ -131,11 +131,11 @@ Castor and Pollux were twin brothers whose mother was Leda.  Pollux's father was
 	```
 ![Plotting the trend](./images/trendPlot.png)
 
-**Find outliers relative to the trend and plot them on both the trend and time series**
+**Find outliers using stl plot them on both the trend and time series**
 
     ```r
-	# Find trend outliers and highlight them on both the trend and original time series in purple
-	to <- Castor::getTrendOutliers(diab2014)
+	# Find stl outliers and highlight them on both the trend and original time series in purple
+	to <- Castor::getOutliers(diab2014,"stl")
 	ts.plot(diab2014,diab2014.tr,col=c("black","red"))
 	points(x=time(diab2014.tr)[to],y=diab2014.tr[to],col="purple",cex=1.1,pch=16)
 	points(x=time(diab2014)[to],y=diab2014[to],col="purple",cex=1.1,pch=16)
