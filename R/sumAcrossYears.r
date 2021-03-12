@@ -6,6 +6,7 @@
 #'
 #'@return A data frame reporting the monthly sum across all years and the proportion this sum contributes to the total.
 #'
+#'@import dplyr
 #'@export
 
 sumAcrossYears  <- function(tsData)
