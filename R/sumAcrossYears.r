@@ -11,6 +11,9 @@
 
 sumAcrossYears  <- function(tsData)
 {
+
+	library(dplyr)
+	
     # Read the time series into a data frame with character string months    
 	tsAsDf <- data.frame(MONTH_NUM=cycle(tsData), TS_VALUE=tsData, stringsAsFactors = F)
 	# Summarize by month across all years
