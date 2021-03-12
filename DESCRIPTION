@@ -24,7 +24,8 @@ URL: https://ohdsi.github.io/Castor, https://github.com/OHDSI/Castor
 BugReports: https://github.com/OHDSI/Castor/issues
 Depends:
 	R (>= 3.5.0),
-	DatabaseConnector (>= 2.2.0),
+	DatabaseConnector (>= 2.2.0)
+Imports:
 	dplyr,
 	SqlRender (>= 1.5.2),
 	tseries
