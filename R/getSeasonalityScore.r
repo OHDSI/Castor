@@ -18,6 +18,7 @@
 #'
 #'@return A numeric value between 0 and 1 (inclusive) representing the seasonality of a time series.
 #'
+#'@import dplyr
 #'@export
 
 getSeasonalityScore <- function(tsData)
