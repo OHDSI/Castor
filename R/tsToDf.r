@@ -16,7 +16,7 @@ tsToDf  <- function(tsData)
 	}
 
 	if (frequency(tsData) == 12) 
-		tsAsDf <- data.frame(YEAR=floor(time(tsData)), MONTH_NUM=getTsMonth(tsData), TS_VALUE=tsData, stringsAsFactors = F)
+		tsAsDf <- data.frame(YEAR=floor(round(time(tsData),3)), MONTH_NUM=getTsMonth(tsData), TS_VALUE=tsData, stringsAsFactors = F)
 	else if (frequency(tsData) == 365) {
 	    dayOfMonth <- as.integer(strftime(as.Date(paste0(floor(time(tsData)),cycle(tsData)),"%Y%j"),"%d"))
 		tsAsDf <- data.frame(YEAR=floor(time(tsData)), MONTH_NUM=getTsMonth(tsData), DAY_NUM=dayOfMonth, TS_VALUE=tsData, stringsAsFactors = F)
